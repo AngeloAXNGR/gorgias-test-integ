@@ -28,17 +28,19 @@
 // })
 
 
-
+// https://gorgias-test-integ.onrender.com/api/customers/?email={{ticket.customer.email}}
 
 const express = require('express');
 const app = express();
 const axios = require('axios');
 
-app.get('/api/users', async (req, res) => {
+app.get('/api/customers', async (req, res) => {
   const email = req.query.email;
-  const url = `https://gorgias-test-integ.onrender.com/api/users?email=${email}`;
+	console.log(email);
+  const url = `https://gorgias-test-integ.onrender.com/api/customers?email=${email}`;
   try {
     const response = await axios.get(url);
+		console.log(response);
     res.send(response.data);
   } catch (error) {
     console.error(error);
